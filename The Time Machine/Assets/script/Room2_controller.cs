@@ -8,7 +8,7 @@ public class Room2_controller : MonoBehaviour {
 	private CoffinScript coffin_right;
 	public GameObject camera;
 	public GameObject player;
-//	public GameObject door;
+	public GameObject door;
 	public Canvas container;
 	public Image[] image = new Image[3] ;
 	public Text text;
