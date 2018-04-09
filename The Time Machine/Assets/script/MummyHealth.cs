@@ -40,11 +40,19 @@ public class MummyHealth : MonoBehaviour {
 			game.firstTime = false;
 			game.startGame ();
 			game.Play ();
+<<<<<<< HEAD
 			transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
 			Destroy (gameObject, 10f);
 		} else if (isDead && collectable != null) {
 			transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
 			Destroy (gameObject, 10f);
+=======
+			//transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
+			Destroy (gameObject, 0.1f);
+		} else if (isDead && collectable != null) {
+			transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
+			Destroy (gameObject, 10f);
+>>>>>>> 0203c10de053375f366dc3122b2235c2fa40b025
 			//collect el collectable
 		}
 	}
