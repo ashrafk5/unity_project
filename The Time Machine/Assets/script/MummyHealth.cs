@@ -9,13 +9,15 @@ public class MummyHealth : MonoBehaviour {
 	public int currentHealth;                   // The current health the enemy has.
 	public float sinkSpeed = 10f;              // The speed at which the enemy sinks through the floor when dead.
 	public int scoreValue = 10;                 // The amount added to the player's score when the enemy dies.
+	public Room2_controller game;
+	public GameObject collectable;
 	//public AudioClip deathClip;                 // The sound to play when the enemy dies.
 
 
 	Animator anim;                              // Reference to the animator.
 	//AudioSource enemyAudio;                     // Reference to the audio source.
 	ParticleSystem hitParticles;                // Reference to the particle system that plays when the enemy is damaged.
-	bool isDead;                                // Whether the enemy is dead.
+	public bool isDead;                                // Whether the enemy is dead.
 	bool isSinking;                             // Whether the enemy has started sinking through the floor.
 
 
@@ -28,16 +30,22 @@ public class MummyHealth : MonoBehaviour {
 
 		// Setting the current health when the enemy first spawns.
 		currentHealth = startingHealth;
+
 	}
 
 
 	void Update ()
 	{
-		// If the enemy should be sinking...
-		if(isSinking)
-		{
-			// ... move the enemy down by the sinkSpeed per second.
+		if (isDead && collectable == null) {
+			game.firstTime = false;
+			game.startGame ();
+			game.Play ();
 			transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
+			Destroy (gameObject, 10f);
+		} else if (isDead && collectable != null) {
+			transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
+			Destroy (gameObject, 10f);
+			//collect el collectable
 		}
 	}
 
@@ -47,6 +55,7 @@ public class MummyHealth : MonoBehaviour {
 		// If the enemy is dead...
 		if(isDead)
 			// ... no need to take damage so exit the function.
+			//game.startGame();
 			return;
 
 		// Play the hurt sound effect.
@@ -78,13 +87,12 @@ public class MummyHealth : MonoBehaviour {
 		// Change the audio clip of the audio source to the death clip and play it (this will stop the hurt clip playing).
 		//enemyAudio.clip = deathClip;
 		//enemyAudio.Play ();
-		isSinking = true;
+		//isSinking = true;
 
 		// Increase the score by the enemy's score value.
 		ScoreManager.score += scoreValue;
 
 		// After 2 seconds destory the enemy.
-		Destroy (gameObject, 10f);
 	}
 
 

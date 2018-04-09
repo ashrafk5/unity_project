@@ -8,6 +8,9 @@ TagManager:
   - CoffinRight
   - CoffinLeft
   - Pistol
+  - 'Mummy_left '
+  - Mummy_middle
+  - Mummy_right
   layers:
   - Default
   - TransparentFX

@@ -14,6 +14,7 @@ public class CoffinScript : MonoBehaviour {
 	public void openCoffin(){
 		Coffinanim.SetTrigger ("IsSelected");
 		if (Mummy != null) {
+			Mummy.SetActive (true);
 			Mummy.GetComponent<MummyScript> ().enabled = true;
 			Mummy.GetComponent<MummyScript> ().coffinOpen = true;
 		}
