@@ -40,8 +40,8 @@ public class MummyHealth : MonoBehaviour {
 			game.firstTime = false;
 			game.startGame ();
 			game.Play ();
-			transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
-			Destroy (gameObject, 10f);
+			//transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
+			Destroy (gameObject, 0.1f);
 		} else if (isDead && collectable != null) {
 			transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
 			Destroy (gameObject, 10f);
